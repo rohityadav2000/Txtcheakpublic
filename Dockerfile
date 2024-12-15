@@ -1,8 +1,15 @@
-FROM python:3.9.7-slim-buster
+# Base image बदलें (Debian-based slim-buster से Alpine-based पर स्विच करें)
+FROM python:3.9.7-alpine
 
-WORKDIR .
-COPY . .
-
+# Dependencies install करें
 RUN apk add --no-cache gcc libffi-dev musl-dev ffmpeg aria2 \
     && pip install --no-cache-dir -r requirements.txt
-CMD [ "python", "./main.py" ]
+
+# Working directory सेट करें
+WORKDIR /app
+
+# Source code कॉपी करें
+COPY . .
+
+# Application स्टार्ट करें
+CMD ["python", "./main.py"]
