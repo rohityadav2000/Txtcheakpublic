@@ -1,0 +1,15 @@
+name: my-python-app  # Replace with your app's name
+
+services:
+  - name: python-service
+    routes:
+      - name: main-route
+        port: 8080  # The port your app listens to
+    build:
+      type: docker
+      dockerfile: ./Dockerfile  # Path to your Dockerfile
+    env:
+      - name: ENV_VAR_NAME  # Replace with your environment variable
+        value: ENV_VAR_VALUE
+    regions:
+      - fra  # Frankfurt region (choose a region suitable for your users)
